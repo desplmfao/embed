@@ -10,4 +10,4 @@ micros:
     run: ./reverse
     include:
       - static/
-      - target/release/reverse
+      - target/x86_64-unknown-linux-gnu/release/reverse
