@@ -16,7 +16,7 @@ pub async fn embed(
 
     if request.uri().path_and_query().unwrap().to_string().contains(&"/-?url=") {
         let data = serde_json::json!({
-            "url": ("/-.mp4z?url=".to_owned() + &q_url.to_string())
+            "url": ("/-.mp4?url=".to_owned() + &q_url.to_string())
         });
 
         let body = hb.render("embed", &data).unwrap();
