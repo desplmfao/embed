@@ -5,7 +5,6 @@ pub async fn embed(
     request: actix_web::HttpRequest,
     hb: actix_web::web::Data<handlebars::Handlebars<'_>>
 ) -> actix_web::HttpResponse {
-    let q_host = "https://reverse-1-h0267962.deta.app";
     let q_array = request.query_string().split("url=");
     let q_urlr = q_array.collect::<Vec<_>>()[1];
 
@@ -17,7 +16,7 @@ pub async fn embed(
 
     if request.uri().path_and_query().unwrap().to_string().contains(&"/-?url=") {
         let data = serde_json::json!({
-            "url": (q_host.to_owned() + "/-.mp4?url=" + q_url.to_string().as_str())
+            "url": ("/-.mp4z?url=".to_owned() + &q_url.to_string())
         });
 
         let body = hb.render("embed", &data).unwrap();
