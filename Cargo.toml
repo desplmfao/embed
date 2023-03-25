@@ -1,0 +1,43 @@
+[package]
+name = "reverse"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies.tokio]
+version = "1"
+features = [
+    "full",
+]
+
+[dependencies.actix-web]
+version = "4"
+features = []
+
+[dependencies.awc] 
+version = "3"
+features = [ 
+    "rustls" 
+]
+
+[dependencies.urlencoding]
+version = "2"
+features = []
+
+[dependencies.handlebars]
+version = "4"
+features = [
+    "dir_source"
+]
+
+
+[dependencies.serde]
+version = "1"
+features = [
+    "derive"
+]
+
+[dependencies.serde_json]
+version = "1"
+features = []
