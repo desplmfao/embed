@@ -9,7 +9,7 @@ pub fn create_app() -> actix_web::App<
 > {
     let mut handlebars = handlebars::Handlebars::new();
     handlebars
-        .register_templates_directory(".hbs", "./static")
+        .register_templates_directory(".hbs", "./static/templates")
         .map_err(|e| {
             println!("Failed to properly register handlebars templates: {}", e);
             e
@@ -18,7 +18,7 @@ pub fn create_app() -> actix_web::App<
 
     let handlebars_ref = actix_web::web::Data::new(handlebars);
 
-    let max_payload_size = 1024 * 1024 * 512;
+    let max_payload_size: i128 = 1024 * 1024 * 1024 * 1024;
 
     let client = awc::ClientBuilder::new()
         .max_http_version(awc::http::Version::HTTP_2)
