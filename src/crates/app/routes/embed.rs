@@ -1,7 +1,6 @@
 // ########### original idea from shirtjs ###########
 
 pub async fn embed(
-    client: actix_web::web::Data<awc::Client>,
     request: actix_web::HttpRequest,
     hb: actix_web::web::Data<handlebars::Handlebars<'_>>
 ) -> actix_web::HttpResponse {
@@ -24,34 +23,8 @@ pub async fn embed(
     
         actix_web::HttpResponse::Ok().body(body)
     } else {
-        let mut response = match client
-            .request(
-                actix_web::HttpRequest::method(&request).clone(),
-                q_urlr.to_string().to_owned(),
-            )
-            .send()
-            .await
-        {
-            Ok(resp) => resp,
-            Err(e) => {
-                println!("{:?}", e);
-                return actix_web::HttpResponse::InternalServerError().finish();
-            }
-        };
-
-        return actix_web::HttpResponse::Ok()
-            .body(
-                match response
-                    .body()
-                    .limit(1024 * 1024 * 1024 * 1024)
-                    .await
-                {
-                    Ok(resp) => resp.to_vec(),
-                    Err(e) => {
-                        println!("{:?}", e);
-                        return actix_web::HttpResponse::InternalServerError().finish();
-                    }
-                },
-            );
+        return actix_web::HttpResponse::PermanentRedirect()
+            .append_header(("location", urlencoding::decode(&q_url.to_string()).unwrap().to_string()))
+            .finish()
     }
 }

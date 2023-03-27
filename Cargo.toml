@@ -23,12 +23,6 @@ features = [
 version = "4"
 features = []
 
-[dependencies.awc] 
-version = "3"
-features = [ 
-    "rustls" 
-]
-
 [dependencies.urlencoding]
 version = "2"
 features = []

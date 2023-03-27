@@ -3,7 +3,7 @@ pub struct Server;
 impl Server {
     pub async fn initialize() -> std::io::Result<()> {
         let bind_ip = "0.0.0.0";
-        let bind_port = 8080;
+        let bind_port = 8081;
 
         println!("Starting server at {}:{}", bind_ip, bind_port);
 
