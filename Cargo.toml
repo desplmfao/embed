@@ -33,6 +33,11 @@ features = [
     "dir_source"
 ]
 
+[dependencies.awc] 
+version = "3"
+features = [ 
+    "rustls" 
+]
 
 [dependencies.serde]
 version = "1"
